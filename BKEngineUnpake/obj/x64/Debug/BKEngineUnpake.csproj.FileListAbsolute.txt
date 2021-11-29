@@ -1,0 +1,22 @@
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\BKEngineUnpake.dll.config
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\BKEngineUnpake.xml
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\BKEngineUnpake.dll
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\BKEngineUnpake.pdb
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\ICSharpCode.SharpZipLib.dll
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\ICSharpCode.SharpZipLib.pdb
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\ICSharpCode.SharpZipLib.xml
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\obj\x64\Debug\BKEngineUnpake.csproj.CoreCompileInputs.cache
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\obj\x64\Debug\BKEngineUnpake.csproj.CopyComplete
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\obj\x64\Debug\BKEngineUnpake.dll
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\obj\x64\Debug\BKEngineUnpake.pdb
+D:\Github\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\BKEngineUnpake.dll.config
+D:\Github\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\BKEngineUnpake.xml
+D:\Github\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\BKEngineUnpake.dll
+D:\Github\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\BKEngineUnpake.pdb
+D:\Github\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\ICSharpCode.SharpZipLib.dll
+D:\Github\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\ICSharpCode.SharpZipLib.pdb
+D:\Github\BKEUnpaker\BKEngineUnpake\bin\x64\Debug\ICSharpCode.SharpZipLib.xml
+D:\Github\BKEUnpaker\BKEngineUnpake\obj\x64\Debug\BKEngineUnpake.csproj.CoreCompileInputs.cache
+D:\Github\BKEUnpaker\BKEngineUnpake\obj\x64\Debug\BKEngineUnpake.csproj.CopyComplete
+D:\Github\BKEUnpaker\BKEngineUnpake\obj\x64\Debug\BKEngineUnpake.dll
+D:\Github\BKEUnpaker\BKEngineUnpake\obj\x64\Debug\BKEngineUnpake.pdb

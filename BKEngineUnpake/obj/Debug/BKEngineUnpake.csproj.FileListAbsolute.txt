@@ -1,0 +1,11 @@
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\Debug\BKEngineUnpake.dll.config
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\Debug\BKEngineUnpake.dll
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\Debug\BKEngineUnpake.pdb
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\Debug\ICSharpCode.SharpZipLib.pdb
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\bin\Debug\ICSharpCode.SharpZipLib.xml
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\obj\Debug\BKEngineUnpake.csproj.AssemblyReference.cache
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\obj\Debug\BKEngineUnpake.csproj.CoreCompileInputs.cache
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\obj\Debug\BKEngineUnpake.csproj.CopyComplete
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\obj\Debug\BKEngineUnpake.dll
+D:\#Reverse Tools\BKEUnpaker\BKEngineUnpake\obj\Debug\BKEngineUnpake.pdb

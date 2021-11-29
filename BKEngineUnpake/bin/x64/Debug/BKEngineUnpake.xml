@@ -1,0 +1,821 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BKEngineUnpake</name>
+    </assembly>
+    <members>
+        <member name="T:BKEUnpake.V20.BKARCFile">
+            <summary>
+            文件处理
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BKARCFile.isVaild">
+            <summary>
+            封包合法性标志
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BKARCFile.listInfo">
+            <summary>
+            文件表信息
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BKARCFile.errorMessage">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BKARCFile.outDirectory">
+            <summary>
+            输出路径
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BKARCFile.fileStream">
+            <summary>
+            文件流
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BKARCFile.filekey">
+            <summary>
+            文件listkey
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BKARCFile.mCompressedResourceslist">
+            <summary>
+            压缩资源文件表
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BKARCFile.mNormalResourceslist">
+            <summary>
+            普通资源文件表
+            </summary>
+        </member>
+        <member name="P:BKEUnpake.V20.BKARCFile.IsVaild">
+            <summary>
+            获取封包合法性
+            </summary>
+        </member>
+        <member name="P:BKEUnpake.V20.BKARCFile.ErrorMessage">
+            <summary>
+            获取错误信息
+            </summary>
+        </member>
+        <member name="M:BKEUnpake.V20.BKARCFile.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="filepath">文件路径</param>
+        </member>
+        <member name="M:BKEUnpake.V20.BKARCFile.FileAnalysis(System.String)">
+            <summary>
+            文件解析
+            </summary>
+            <param name="filepath">文件路径</param>
+        </member>
+        <member name="M:BKEUnpake.V20.BKARCFile.DecryptFile">
+            <summary>
+            解密文件
+            </summary>
+            <returns>True为解密成功 False为解密失败</returns>
+        </member>
+        <member name="M:BKEUnpake.V20.BKARCFile.CheckAndOutput(System.Collections.Generic.List{System.Collections.Generic.List{System.Byte}},System.Collections.Generic.List{BKEUnpake.V20.BZip2CompressedResources})">
+            <summary>
+            检查文件格式然后导出到硬盘(压缩资源版本)
+            </summary>
+            <param name="data">字节流数组</param>
+            <param name="ziplist">压缩数据表</param>
+            <returns>True为导出成功 Flase为导出失败</returns>
+        </member>
+        <member name="M:BKEUnpake.V20.BKARCFile.CheckAndOutput(System.Collections.Generic.List{System.Collections.Generic.List{System.Byte}},System.Collections.Generic.List{BKEUnpake.V20.NormalResources})">
+            <summary>
+            检查文件格式然后导出到硬盘(普通资源版本)
+            </summary>
+            <param name="data">字节流数组</param>
+            <param name="reslist">普通数据表</param>
+            <returns>True为导出成功 Flase为导出失败</returns>
+        </member>
+        <member name="M:BKEUnpake.V20.BKARCFile.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="T:BKEUnpake.V20.BKARCList">
+            <summary>
+            文件资源表
+            </summary>
+        </member>
+        <member name="M:BKEUnpake.V20.BKARCList.FileListInfoAnalysis(System.Byte[],BKEUnpake.V20.FilePackageListInfo@)">
+            <summary>
+            解析文件中列表信息结构
+            </summary>
+            <param name="filelistinfodata">文件中列表数据</param>
+            <param name="listInfo"></param>
+        </member>
+        <member name="M:BKEUnpake.V20.BKARCList.DecryptList(System.Byte[],System.UInt32,System.UInt32@)">
+            <summary>
+            解密列表数据
+            </summary>
+            <param name="listdata">文件中列表原数据</param>
+            <param name="listdecryptkey">表解密key</param>
+            <param name="filekey">文件解密key</param>
+            <returns>解密后的文件列表压缩数据</returns>
+        </member>
+        <member name="M:BKEUnpake.V20.BKARCList.ListAnalysis(System.Byte[],System.UInt32,System.Collections.Generic.List{BKEUnpake.V20.BZip2CompressedResources}@,System.Collections.Generic.List{BKEUnpake.V20.NormalResources}@)">
+            <summary>
+            文件表解析
+            </summary>
+            <param name="metalistdata">文件表原数据</param>
+            <param name="listcount">列表项项数</param>
+            <param name="compressedreslist">压缩资源表数组</param>
+            <param name="normalreslist">普通资源表数组</param>
+        </member>
+        <member name="M:BKEUnpake.V20.FileIOManager.ReadCompressedResources(System.IO.FileStream,System.Collections.Generic.List{BKEUnpake.V20.BZip2CompressedResources},System.String@)">
+            <summary>
+            读取文件中的压缩资源
+            </summary>
+            <param name="fileStream">文件流</param>
+            <param name="compressedresinfo">压缩资源列表项</param>
+            <param name="errormessage">错误信息</param>
+            <returns>读取成功返回数据流数组 读取失败为Null</returns>
+        </member>
+        <member name="M:BKEUnpake.V20.FileIOManager.ReadNormalResources(System.IO.FileStream,System.Collections.Generic.List{BKEUnpake.V20.NormalResources},System.String@)">
+            <summary>
+            读取普通资源文件
+            </summary>
+            <param name="fileStream">文件流</param>
+            <param name="normalresinfo">普通资源表</param>
+            <param name="errormessage">错误信息</param>
+            <returns>读取成功返回数据流数据数组 读取失败为Null</returns>
+        </member>
+        <member name="M:BKEUnpake.V20.FileIOManager.WriteFile(System.Byte[],System.String,System.String@)">
+            <summary>
+            写入文件
+            </summary>
+            <param name="data">数据流</param>
+            <param name="filepath">文件路径</param>
+            <param name="errormessage">错误信息</param>
+            <returns>True为写入成功 False为写入失败</returns>
+        </member>
+        <member name="T:BKEUnpake.V20.FilePackageListInfo">
+            <summary>
+            文件表封包结构
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.FilePackageListInfo.ListDataSize">
+            <summary>
+            资源表长度
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.FilePackageListInfo.ListCount">
+            <summary>
+            资源表项计数
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.FilePackageListInfo.ListDecryptKey">
+            <summary>
+            资源表解密listkey
+            </summary>
+        </member>
+        <member name="T:BKEUnpake.V20.BZip2CompressedResources">
+            <summary>
+            压缩资源位于资源表中的结构
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BZip2CompressedResources.FileName">
+            <summary>
+            文件名Hash
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BZip2CompressedResources.FileOffset">
+            <summary>
+            资源在文件中的偏移
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BZip2CompressedResources.UncompressedSize">
+            <summary>
+            资源解压后的大小
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BZip2CompressedResources.ResourcesType">
+            <summary>
+            资源类型  压缩包型则为1
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.BZip2CompressedResources.FileSize">
+            <summary>
+            资源在文件中的大小
+            </summary>
+        </member>
+        <member name="T:BKEUnpake.V20.NormalResources">
+            <summary>
+            普通资源位于资源表中的结构
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.NormalResources.FileName">
+            <summary>
+            文件名Hash
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.NormalResources.FileOffset">
+            <summary>
+            资源在文件中的偏移
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.NormalResources.FileSize">
+            <summary>
+            资源在文件中的大小
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.NormalResources.ResourcesType">
+            <summary>
+            资源类型  普通型则为0
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V20.FileSignature.fileHeader">
+            <summary>
+            文件头特征
+            </summary>
+        </member>
+        <member name="P:BKEUnpake.V20.FileSignature.Header">
+            <summary>
+            获取文件头
+            </summary>
+        </member>
+        <member name="T:BKEUnpake.V21.BKARCFile">
+            <summary>
+            文件处理
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BKARCFile.isVaild">
+            <summary>
+            封包合法性标志
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BKARCFile.listInfo">
+            <summary>
+            文件表信息
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BKARCFile.errorMessage">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BKARCFile.outDirectory">
+            <summary>
+            输出路径
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BKARCFile.fileStream">
+            <summary>
+            文件流
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BKARCFile.filekey">
+            <summary>
+            文件listkey
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BKARCFile.mCompressedResourceslist">
+            <summary>
+            压缩资源文件表
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BKARCFile.mNormalResourceslist">
+            <summary>
+            普通资源文件表
+            </summary>
+        </member>
+        <member name="P:BKEUnpake.V21.BKARCFile.IsVaild">
+            <summary>
+            获取封包合法性
+            </summary>
+        </member>
+        <member name="P:BKEUnpake.V21.BKARCFile.ErrorMessage">
+            <summary>
+            获取错误信息
+            </summary>
+        </member>
+        <member name="M:BKEUnpake.V21.BKARCFile.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="filepath">文件路径</param>
+        </member>
+        <member name="M:BKEUnpake.V21.BKARCFile.FileAnalysis(System.String)">
+            <summary>
+            文件解析
+            </summary>
+            <param name="filepath">文件路径</param>
+        </member>
+        <member name="M:BKEUnpake.V21.BKARCFile.DecryptFile">
+            <summary>
+            解密文件
+            </summary>
+            <returns>True为解密成功 False为解密失败</returns>
+        </member>
+        <member name="M:BKEUnpake.V21.BKARCFile.CheckAndOutput(System.Collections.Generic.List{System.Collections.Generic.List{System.Byte}},System.Collections.Generic.List{BKEUnpake.V21.BZip2CompressedResources})">
+            <summary>
+            检查文件格式然后导出到硬盘(压缩资源版本)
+            </summary>
+            <param name="data">字节流数组</param>
+            <param name="ziplist">压缩数据表</param>
+            <returns>True为导出成功 Flase为导出失败</returns>
+        </member>
+        <member name="M:BKEUnpake.V21.BKARCFile.CheckAndOutput(System.Collections.Generic.List{System.Collections.Generic.List{System.Byte}},System.Collections.Generic.List{BKEUnpake.V21.NormalResources})">
+            <summary>
+            检查文件格式然后导出到硬盘(普通资源版本)
+            </summary>
+            <param name="data">字节流数组</param>
+            <param name="reslist">普通数据表</param>
+            <returns>True为导出成功 Flase为导出失败</returns>
+        </member>
+        <member name="M:BKEUnpake.V21.BKARCFile.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="T:BKEUnpake.V21.BKARCList">
+            <summary>
+            文件资源表
+            </summary>
+        </member>
+        <member name="M:BKEUnpake.V21.BKARCList.FileListInfoAnalysis(System.Byte[],BKEUnpake.V21.FilePackageListInfo@)">
+            <summary>
+            解析文件中列表信息结构
+            </summary>
+            <param name="filelistinfodata">文件中列表数据</param>
+            <param name="listInfo"></param>
+        </member>
+        <member name="M:BKEUnpake.V21.BKARCList.DecryptList(System.Byte[],System.UInt32,System.UInt32@)">
+            <summary>
+            解密列表数据
+            </summary>
+            <param name="listdata">文件中列表原数据</param>
+            <param name="listdecryptkey">表解密Key</param>
+            <param name="filekey">文件key</param>
+            <returns>解密后的文件列表压缩数据</returns>
+        </member>
+        <member name="M:BKEUnpake.V21.BKARCList.ListAnalysis(System.Byte[],System.UInt32,System.Collections.Generic.List{BKEUnpake.V21.BZip2CompressedResources}@,System.Collections.Generic.List{BKEUnpake.V21.NormalResources}@)">
+            <summary>
+            文件表解析
+            </summary>
+            <param name="metalistdata">文件表原数据</param>
+            <param name="listcount">列表项项数</param>
+            <param name="compressedreslist">压缩资源表数组</param>
+            <param name="normalreslist">普通资源表数组</param>
+        </member>
+        <member name="M:BKEUnpake.V21.Encrypt.EncryptFileName(System.String)">
+            <summary>
+            加密文件名
+            </summary>
+            <param name="filename">文件名</param>
+        </member>
+        <member name="T:BKEUnpake.V21.DecryptHelper">
+            <summary>
+            数据解密
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.DecryptHelper.constKey1">
+            <summary>
+            常量key1
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.DecryptHelper.constKey2">
+            <summary>
+            常量key2
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.DecryptHelper.constKey3">
+            <summary>
+            常量key3
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.DecryptHelper.constKey4">
+            <summary>
+            常量key4
+            </summary>
+        </member>
+        <member name="M:BKEUnpake.V21.DecryptHelper.DecryptList(System.Byte[],System.UInt32,System.UInt32)">
+            <summary>
+            列表解密
+            </summary>
+            <param name="databuffer">数据字节数组</param>
+            <param name="datalength">数据长度</param>
+            <param name="listkey">解密listkey</param>
+            <returns>文件key</returns>
+        </member>
+        <member name="M:BKEUnpake.V21.DecryptHelper.DecryptIndex(System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            解密文件listkey索引
+            </summary>
+            <param name="rangekey">索引范围listkey</param>
+            <param name="indexrange">索引范围</param>
+            <param name="unknowkey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BKEUnpake.V21.DecryptHelper.DecryptFile(System.Byte[],System.Int32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            解密文件
+            </summary>
+            <param name="filebuffer">文件数据流</param>
+            <param name="filekey">解密listkey</param>
+            <param name="filesize">文件大小</param>
+            <param name="fileoffset">文件在封包内偏移</param>
+            <param name="memoryoffset">文件读取偏移</param>
+            <returns>True为文件进行解密操作 False为未进行解密操作</returns>
+        </member>
+        <member name="M:BKEUnpake.V21.FileIOManager.ReadCompressedResources(System.IO.FileStream,System.Collections.Generic.List{BKEUnpake.V21.BZip2CompressedResources},System.String@)">
+            <summary>
+            读取文件中的压缩资源
+            </summary>
+            <param name="fileStream">文件流</param>
+            <param name="compressedresinfo">压缩资源列表项</param>
+            <param name="errormessage">错误信息</param>
+            <returns>读取成功返回数据流数组 读取失败为Null</returns>
+        </member>
+        <member name="M:BKEUnpake.V21.FileIOManager.ReadNormalResources(System.IO.FileStream,System.Collections.Generic.List{BKEUnpake.V21.NormalResources},System.String@)">
+            <summary>
+            读取普通资源文件
+            </summary>
+            <param name="fileStream">文件流</param>
+            <param name="normalresinfo">普通资源表</param>
+            <param name="errormessage">错误信息</param>
+            <returns>读取成功返回数据流数据数组 读取失败为Null</returns>
+        </member>
+        <member name="M:BKEUnpake.V21.FileIOManager.WriteFile(System.Byte[],System.String,System.String@)">
+            <summary>
+            写入文件
+            </summary>
+            <param name="data">数据流</param>
+            <param name="filepath">文件路径</param>
+            <param name="errormessage">错误信息</param>
+            <returns>True为写入成功 False为写入失败</returns>
+        </member>
+        <member name="T:BKEUnpake.V21.FilePackageListInfo">
+            <summary>
+            文件表封包结构
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.FilePackageListInfo.ListDataSize">
+            <summary>
+            资源表长度
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.FilePackageListInfo.ListCount">
+            <summary>
+            资源表项计数
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.FilePackageListInfo.ListDecryptKey">
+            <summary>
+            资源表解密listkey
+            </summary>
+        </member>
+        <member name="T:BKEUnpake.V21.BZip2CompressedResources">
+            <summary>
+            压缩资源位于资源表中的结构
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BZip2CompressedResources.FileNameHash">
+            <summary>
+            文件名Hash
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BZip2CompressedResources.FileOffset">
+            <summary>
+            资源在文件中的偏移
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BZip2CompressedResources.UncompressedSize">
+            <summary>
+            资源解压后的大小
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BZip2CompressedResources.ResourcesType">
+            <summary>
+            资源类型  压缩包型则为1
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.BZip2CompressedResources.FileSize">
+            <summary>
+            资源在文件中的大小
+            </summary>
+        </member>
+        <member name="T:BKEUnpake.V21.NormalResources">
+            <summary>
+            普通资源位于资源表中的结构
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.NormalResources.FileNameHash">
+            <summary>
+            文件名Hash
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.NormalResources.FileOffset">
+            <summary>
+            资源在文件中的偏移
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.NormalResources.FileSize">
+            <summary>
+            资源在文件中的大小
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V21.NormalResources.ResourcesType">
+            <summary>
+            资源类型  普通型则为0
+            </summary>
+        </member>
+        <member name="M:BKEUnpake.V40.BKARCFile.AnalysisFile">
+            <summary>
+            分析文件
+            </summary>
+            <returns>文件表压缩数据</returns>
+        </member>
+        <member name="M:BKEUnpake.V40.BKARCFile.DecryptArchive(System.Byte[])">
+            <summary>
+            解密文件数据
+            </summary>
+            <param name="uncompressedListData">解压后文件表</param>
+            <returns></returns>
+        </member>
+        <member name="M:BKEUnpake.V40.BKARCFile.OutputArchiveData">
+            <summary>
+            导出资源
+            </summary>
+        </member>
+        <member name="M:BKEUnpake.V40.BKARCList.ListTableAnalysis(System.Byte[])">
+            <summary>
+            分析文件表
+            </summary>
+            <param name="listTableData">文件表数据</param>
+            <returns></returns>
+        </member>
+        <member name="T:BKEUnpake.V40.FileHeader">
+            <summary>
+            文件头结构
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileHeader.Signature">
+            <summary>
+            文件头标记
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileHeader.OffsetKey1">
+            <summary>
+            解密Key1
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileHeader.OffsetKey2">
+            <summary>
+            解密Key2
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileHeader.OffsetKey3">
+            <summary>
+            解密Key3
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileHeader.Ender">
+            <summary>
+            文件头结束全0
+            </summary>
+        </member>
+        <member name="P:BKEUnpake.V40.FileHeader.IsVaild">
+            <summary>
+            获取文件头标记是否合法
+            </summary>
+        </member>
+        <member name="T:BKEUnpake.V40.TableKeyGroup">
+            <summary>
+            文件表Key结构体
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.TableKeyGroup.CompressedSizeKey">
+            <summary>
+            用于计算压缩文件长度
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.TableKeyGroup.UncompressedSizeKey">
+            <summary>
+            用于计算解压缩文件长度
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.TableKeyGroup.TableKey">
+            <summary>
+            解密文件表压缩包Key
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.TableKeyGroup.Ender">
+            <summary>
+            key组结束全0
+            </summary>
+        </member>
+        <member name="T:BKEUnpake.V40.FileType">
+            <summary>
+            文件数据类型
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileType.NormalArchive">
+            <summary>
+            一般资源
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileType.Signuature">
+            <summary>
+            标记
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileType.CompressedArchive">
+            <summary>
+            压缩资源
+            </summary>
+        </member>
+        <member name="T:BKEUnpake.V40.FileListTable">
+            <summary>
+            文件表结构
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileListTable.FileType">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileListTable.FileSize">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileListTable.FileOffset">
+            <summary>
+            文件偏移
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileListTable.Key">
+            <summary>
+            文件Key(普通资源可用)
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileListTable.DecompressLength">
+            <summary>
+            解压后长度(压缩资源可用)
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileListTable.FileName">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="T:BKEUnpake.V40.ListHeader">
+            <summary>
+            文件列表数据头
+            </summary>
+        </member>
+        <member name="M:BKEUnpake.V40.DecryptHelper.DecryptTableKeyGroupFileOffset(BKEUnpake.V40.FileHeader)">
+            <summary>
+            计算文件表Key组的偏移
+            </summary>
+            <param name="fileHeader">文件头</param>
+            <returns>文件目录表解密Key偏移</returns>
+        </member>
+        <member name="M:BKEUnpake.V40.DecryptHelper.DecryptTableSize(BKEUnpake.V40.FileHeader,BKEUnpake.V40.TableKeyGroup,System.UInt32@)">
+            <summary>
+            获取文件表压缩包的大小
+            </summary>
+            <param name="fileHeader">文件头</param>
+            <param name="tableKeyGroup">文件表key组</param>
+            <param name="uncompressedLength">解压后长度</param>
+            <returns>文件表压缩包大小</returns>
+        </member>
+        <member name="M:BKEUnpake.V40.DecryptHelper.DecryptCompressedTable(System.Byte[],System.Int32,System.UInt32)">
+            <summary>
+            解密文件表压缩包
+            </summary>
+            <param name="buffer">文件表数据</param>
+            <param name="length">解密长度</param>
+            <param name="tableKey">文件表key</param>
+            <returns>文件key</returns>
+        </member>
+        <member name="M:BKEUnpake.V40.DecryptHelper.DecryptFileKey(System.UInt32,System.UInt32@,System.UInt32@)">
+            <summary>
+            计算文件解密的XorKey和Xor长度
+            </summary>
+            <param name="fileKey">文件key</param>
+            <param name="xorKey">解密异或key</param>
+            <param name="xorLength">解密异或长度</param>
+        </member>
+        <member name="M:BKEUnpake.V40.DecryptHelper.DecryptFile(System.Byte[],System.UInt32,System.UInt32)">
+            <summary>
+            解密文件
+            </summary>
+            <param name="data">文件数据</param>
+            <param name="xorKey">文件异或key</param>
+            <param name="xorLength">文件异或长度</param>
+        </member>
+        <member name="T:BKEUnpake.V40.FileFix">
+            <summary>
+            文件修复
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.V40.FileFix.fixedHeader">
+            <summary>
+            BZip2文件头
+            </summary>
+        </member>
+        <member name="M:BKEUnpake.V40.FileFix.CompressedResourcesFix(System.Byte[])">
+            <summary>
+            修复文件资源的压缩文件头
+            </summary>
+            <param name="filedata">文件数据流</param>
+            <returns></returns>
+        </member>
+        <member name="T:BKEUnpake.BZip2Helper">
+            <summary>
+            数据解压
+            </summary>
+        </member>
+        <member name="M:BKEUnpake.BZip2Helper.DecompressData(System.Byte[])">
+            <summary>
+            解压数据
+            </summary>
+            <param name="data">压缩包数据</param>
+            <returns>解压后的数据  返回null则为解压失败</returns>
+        </member>
+        <member name="M:BKEUnpake.BZip2Helper.DecompressData(System.Collections.Generic.List{System.Collections.Generic.List{System.Byte}})">
+            <summary>
+            解压一组压缩数据
+            </summary>
+            <param name="data">一组压缩数据</param>
+            <returns>解压后的数据数组 null为解压失败</returns>
+        </member>
+        <member name="M:BKEUnpake.AilgnmentManagar.GetAlignment(System.UInt32,System.UInt32)">
+            <summary>
+            获取对齐后的大小
+            </summary>
+            <param name="value">对齐前数值</param>
+            <param name="align">对齐因子</param>
+            <returns>对齐后大小</returns>
+        </member>
+        <member name="M:BKEUnpake.AilgnmentManagar.GetAlignment(System.UInt64,System.UInt64)">
+            <summary>
+            获取对齐后的大小
+            </summary>
+            <param name="value">对齐前数值</param>
+            <param name="align">对齐因子</param>
+            <returns>对齐后大小</returns>
+        </member>
+        <member name="M:BKEUnpake.StructureConvert.GetUTF8String(System.Byte[],System.UInt32,System.UInt32@)">
+            <summary>
+            将指定字节数据以Ascii编码模式转化为字符串
+            </summary>
+            <param name="data">字节流数据</param>
+            <param name="offset">数据偏移</param>
+            <param name="length">字符串长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:BKEUnpake.StructureConvert.GetStructure``1(System.Byte[],System.Int32)">
+            <summary>
+            将字节流数据转化为结构体类型
+            </summary>
+            <typeparam name="T">结构体类型</typeparam>
+            <param name="data">字节流数据</param>
+            <param name="offset">起始偏移</param>
+            <returns>指定类型结构体数据</returns>
+        </member>
+        <member name="T:BKEUnpake.FileFix">
+            <summary>
+            文件修复
+            </summary>
+        </member>
+        <member name="F:BKEUnpake.FileFix.fixedHeader">
+            <summary>
+            BZip2文件头
+            </summary>
+        </member>
+        <member name="M:BKEUnpake.FileFix.CompressedResourcesFix(System.Collections.Generic.List{System.Collections.Generic.List{System.Byte}})">
+            <summary>
+            修复文件资源的BZip2文件头
+            </summary>
+            <param name="filedata">文件数据流</param>
+            <returns></returns>
+        </member>
+        <member name="F:BKEUnpake.FormatCheck.fileFormat">
+            <summary>
+            文件头与格式
+            </summary>
+        </member>
+        <member name="P:BKEUnpake.FormatCheck.GetFileFormat">
+            <summary>
+            获取已知文件格式
+            </summary>
+        </member>
+        <member name="M:BKEUnpake.FormatCheck.FileCheck(System.Byte[],System.Byte[])">
+            <summary>
+            寻找文件头的特征码
+            </summary>
+            <param name="fileheader">文件头数据流</param>
+            <param name="signature">特征码</param>
+            <returns>True为检查成功 False为检查失败</returns>
+        </member>
+    </members>
+</doc>
